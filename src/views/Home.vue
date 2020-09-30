@@ -1,6 +1,6 @@
 <template>
   <div>
-    <filters @change="page = 1"></filters>
+    <filters @change="(page = 1), (sortBy = 'surname')"></filters>
     <table
       id="main-table"
       class="w-full table-fixed border-collapse bg-white select-none"
