@@ -4,6 +4,10 @@
 
 $bg-app: #fafafa;
 
+*{
+  letter-spacing: .5px;
+}
+
 button:focus {
   outline: none;
 }

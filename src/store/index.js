@@ -61,21 +61,18 @@ export default new Vuex.Store({
             resolve(records);
           })
           .catch(err => {
-            console.log("Error: ", err);
+            console.error("Error: ", err);
             reject(err);
           });
       });
     },
 
     createRecord({ dispatch }, record) {
-      console.log("Record: ", record);
       return new Promise((resolve, reject) => {
         recordsRef
           .add(record)
           .then(res => {
-            // console.log("Added document: ", res);
             dispatch("getRecords").then(() => {
-              console.log("HERE?");
               resolve(res);
             });
           })
@@ -84,13 +81,11 @@ export default new Vuex.Store({
     },
 
     editRecord({ dispatch }, record) {
-      console.log("Editing record: ", record);
       return new Promise((resolve, reject) => {
         recordsRef
           .doc(record.id)
           .set(record)
           .then(res => {
-            console.log("Document updated: ", res);
             dispatch("getRecords");
             resolve(res);
           })

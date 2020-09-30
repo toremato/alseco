@@ -5,6 +5,9 @@
       id="main-table"
       class="w-full table-fixed border-collapse bg-white select-none"
     >
+      <caption>
+        Список сотрудников
+      </caption>
       <thead class="bg-gray-700 text-white">
         <tr>
           <th class="w-2/5" @click="changeSorting('surname')">
@@ -255,7 +258,6 @@ export default {
       };
       this.showContextMenu = true;
       this.focusedRecord = record;
-      console.log("Focused Record: ", record);
     },
 
     closeContextMenu() {
@@ -278,7 +280,6 @@ export default {
     },
 
     toggleRow(e) {
-      console.log("Toggle: ", e.path[1], e);
       const currentRow = e.path[1];
       const table = document.querySelector("#main-table");
       const rows = table.getElementsByTagName("tr");
@@ -298,13 +299,11 @@ export default {
     },
 
     deleteRecord() {
-      // console.log("Delete ", this.focusedRecord.name);
       this.$store.dispatch("deleteRecord", this.focusedRecord);
       this.closeContextMenu();
     },
 
     onDoubleClick(record) {
-      console.log("Double");
       this.$router.push({ name: "EditRecord", params: { record } });
     },
 
@@ -323,7 +322,6 @@ export default {
         this.sortBy = newSort;
       }
 
-      console.log("SORT: ", this.sortBy);
       this.$store.dispatch("sortRecords", this.sortBy);
     },
 
@@ -337,9 +335,13 @@ export default {
 
 <style lang="scss" scoped>
 table {
+  caption {
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
   td,
   th {
-    border: 1px solid #cbd5e0;
+    oggleborder: 1px solid #cbd5e0;
   }
   thead {
     th {

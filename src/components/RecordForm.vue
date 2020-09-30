@@ -15,6 +15,9 @@
       </div>
 
       <table class="table-fixed mt-12">
+        <caption>
+          Список выданных материальных ценностей
+        </caption>
         <thead class="bg-gray-700 border border-gray-700 text-white">
           <tr>
             <th>№</th>
@@ -160,8 +163,6 @@ export default {
     removeRow(id) {
       let index = this.record.items.findIndex(i => i.id === id);
       this.record.items.splice(index, 1);
-
-      console.log("Index: ", index, this.record.items);
     },
 
     saveRecord() {
@@ -179,6 +180,10 @@ export default {
 @import "../assets/styles/main.scss";
 
 table {
+  caption {
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
   td,
   th {
     &:not(.table-buttons) {

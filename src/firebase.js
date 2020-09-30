@@ -11,10 +11,3 @@ const firebaseConfig = {
   appId: ""
 };
 export default firebase.initializeApp(firebaseConfig);
-
-// const db = firebase.firestore();
-// console.log("DB", db);
-
-// const employeesCollection = db.collection("employes");
-
-// export { db, employeesCollection };

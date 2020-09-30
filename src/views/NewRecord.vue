@@ -21,7 +21,6 @@ export default {
     },
 
     addRecord(record) {
-      console.log("Adding new record: ", record);
       this.$store.dispatch("createRecord", record).then(() => {
         this.$router.push("/");
       });
