@@ -1,34 +1,33 @@
 <template>
   <div id="app">
-    <router-view />
+    <router-view id="app-content" class="flex m-auto flex-col" />
   </div>
 </template>
 
 <script>
 export default {
   created() {
-    this.$store.dispatch("testFirebase").then(res => {
-      console.log("Dispatch from app: ", res);
-    });
-    // this.$store.dispatch("addDocument").then(res => {
-    //   console.log("Tried to Create doc: ", res);
-    // });
+    this.$store.dispatch("getRecords");
   }
 };
 </script>
 
 <style lang="scss">
+@import "assets/styles/main.scss";
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  height: 100vh;
-  width: 1000px;
+  color: #4a5568;
+  min-height: 100vh;
+  width: 100vw;
   margin: auto;
-  padding: 100px 50px;
-  // background-color: lighten($color: lightcyan, $amount: 3);
-  background: #ccc;
+  padding: 50px;
+  background: $bg-app;
+}
+
+#app-content {
+  max-width: 1200px;
 }
 </style>
