@@ -21,7 +21,7 @@ export default {
   text-align: center;
   color: #4a5568;
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   margin: auto;
   padding: 50px;
   background: $bg-app;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <filters></filters>
+    <filters @change="page = 1"></filters>
     <table
       id="main-table"
       class="w-full table-fixed border-collapse bg-white select-none"
@@ -159,7 +159,7 @@
         </svg>
       </button>
     </div>
-    <div class="mt-20">
+    <div class="mt-12">
       <button
         class="px-6 py-2 rounded text-white bg-teal-400 hover:bg-teal-500 focus:outline-none"
         @click="addNewRecord"
@@ -233,12 +233,6 @@ export default {
     }
   },
 
-  created() {
-    this.$nextTick(() => {
-      // this.highlightRows();
-    });
-  },
-
   methods: {
     // LOCAL HELPER FUNCTIONS
 
@@ -277,20 +271,6 @@ export default {
     closeContextMenu() {
       this.showContextMenu = false;
       this.confirmation = false;
-    },
-
-    highlightRows() {
-      let table = document.querySelector("#main-table");
-      let rows = table.getElementsByTagName("tr");
-
-      for (let row of rows) {
-        row.onclick = () => {
-          for (let each of rows) {
-            each.classList.remove("selected-row");
-          }
-          row.classList.add("selected-row");
-        };
-      }
     },
 
     toggleRow(e) {
@@ -338,6 +318,7 @@ export default {
       }
 
       this.$store.dispatch("sortRecords", this.sortBy);
+      this.page = 1;
     },
 
     changePage(increment) {

@@ -51,6 +51,7 @@ export default {
   methods: {
     applyFilters() {
       this.$store.dispatch("filterRecords", this.filters);
+      this.$emit("change");
     },
 
     resetFilters() {
@@ -65,6 +66,7 @@ export default {
         }
       };
       this.$store.dispatch("resetFilters");
+      this.$emit("change");
     }
   }
 };
