@@ -102,10 +102,24 @@
           <td>{{ record.items.length }}</td>
           <td>{{ formatPrice(record.totalPrice) }}</td>
         </tr>
+        <tr
+          v-for="empty in 10 - records.length"
+          :key="empty"
+          class="empty-row opacity-0 border-none"
+        >
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+        </tr>
       </tbody>
       <tbody v-else>
         <tr>
-          <td rowspan="5" colspan="3" class="hover:bg-white h-64">
+          <td
+            rowspan="5"
+            colspan="3"
+            class="hover:bg-white"
+            style="height: 410px"
+          >
             Нет записей
           </td>
         </tr>
@@ -304,6 +318,7 @@ export default {
     },
 
     onDoubleClick(record) {
+      console.log("Double");
       this.$router.push({ name: "EditRecord", params: { record } });
     },
 
@@ -335,13 +350,20 @@ export default {
 
 <style lang="scss" scoped>
 table {
+  border: 1px solid #cbd5e0;
+
   caption {
     margin-bottom: 20px;
     font-weight: 600;
   }
   td,
   th {
-    oggleborder: 1px solid #cbd5e0;
+    border: 1px solid #cbd5e0;
+  }
+  .empty-row {
+    td {
+      border-color: transparent;
+    }
   }
   thead {
     th {
